@@ -1,2 +1,3 @@
+.idea/*
 prov/migrations/*
 prov/__pycache__/*

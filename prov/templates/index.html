@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Lura Lab Utstyrsprovisjonering</h1>
+
+  <p>Velkommen til <em>Lura Lab Utstyrsprovisjonering</em>, en super lett website utviklet som en et eksempel fra Mozilla Utviklingsnettverket.
+
+<h2>Dynamisk innhold</h2>
+
+  <p>Luralab har følgende innhold: </p>
+  <ul>
+    <li><strong>Utstyr:</strong> {{ num_equip }}</li>
+      <li><strong>Modeller:</strong> {{ num_emodel }}</li>
+      <li><strong>Os:</strong> {{ num_os }}</li>
+  </ul>
+
+{% endblock %}
