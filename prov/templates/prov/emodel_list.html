@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Model List</h1>
+
+    {% if emodel_list %}
+
+    <ul>
+
+      {% for emodel in emodel_list %}
+      <li>
+        <a href="{{ emodel.get_absolute_url }}">{{ emodel.name }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no emodel in the database.</p>
+    {% endif %}
+{% endblock %}

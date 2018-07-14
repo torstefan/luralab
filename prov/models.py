@@ -3,6 +3,7 @@ from django.urls import reverse
 
 # Create your models here.
 
+
 class Equipment(models.Model):
     name = models.CharField(max_length=200, help_text="Enter name of the equipment")
     playbook = models.ForeignKey('Playbook', on_delete=models.SET_NULL, null=True)
@@ -17,7 +18,11 @@ class Equipment(models.Model):
         """
         Returns the url to access a particular instance of the model.
         """
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('equipment-detail', args=[str(self.id)])
+
+    class Meta:
+        ordering = ['name']
+
 
 class Emodel(models.Model):
     name = models.CharField(max_length=200, help_text="Enter name of the model")
@@ -29,7 +34,8 @@ class Emodel(models.Model):
         """
         Returns the url to access a particular instance of the model.
         """
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('emodel-detail', args=[str(self.id)])
+
 
 class Os(models.Model):
     name = models.CharField(max_length=200, help_text="Enter name of the Operating System")
@@ -41,7 +47,8 @@ class Os(models.Model):
         """
         Returns the url to access a particular instance of the model.
         """
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('os-detail', args=[str(self.id)])
+
 
 class Inventory(models.Model):
     name = models.CharField(max_length=200, help_text="Enter name of the Inventory")
@@ -53,7 +60,9 @@ class Inventory(models.Model):
         """
         Returns the url to access a particular instance of the model.
         """
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('inventory-detail', args=[str(self.id)])
+
+
 
 class Playbook(models.Model):
     name = models.CharField(max_length=200, help_text="Enter name of the Playbook")
@@ -65,4 +74,4 @@ class Playbook(models.Model):
         """
         Returns the url to access a particular instance of the model.
         """
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('playbook-detail', args=[str(self.id)])

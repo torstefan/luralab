@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic
 
 # Create your views here.
 
@@ -15,3 +16,20 @@ def index(request):
         context={'num_equip':num_equip, 'num_emodel':num_emodel, 'num_os':num_os}
     )
 
+
+class EquipmentListView(generic.ListView):
+    model = Equipment
+    paginate_by = 10
+
+
+class EquipmentDetailView(generic.DetailView):
+    model = Equipment
+
+
+class EmodelListView(generic.ListView):
+    model = Emodel
+    paginate_by = 10
+
+
+class EmodelDetailView(generic.DetailView):
+    model = Emodel

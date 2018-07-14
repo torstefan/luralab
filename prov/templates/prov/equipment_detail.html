@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ equipment.name }}</h1>
+
+  <p><strong>Playbook:</strong> {{ equipment.playbook }}</p>
+  <p><strong>OS:</strong> {{ equipment.os }}</p>
+  <p><strong>Model:</strong> <a href="{{ equipment.equip_model.get_absolute_url }}"> {{ equipment.equip_model }}</a></p>
+{% endblock %}

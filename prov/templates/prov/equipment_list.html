@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Utstyrsliste</h1>
+
+    {% if equipment_list %}
+
+    <ul>
+
+      {% for equipment in equipment_list %}
+      <li>
+        <a href="{{ equipment.get_absolute_url }}">{{ equipment.name }}</a> ({{equipment.equip_model}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no equipment in the database.</p>
+    {% endif %}
+{% endblock %}
