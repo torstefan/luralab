@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Vrf</h1>
+
+    {% if vrf_list %}
+
+    <ul>
+
+      {% for vrf in vrf_list %}
+      <li>
+        <a href="{{ vrf.get_absolute_url }}">{{ vrf.name }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no vrf in the database.</p>
+    {% endif %}
+{% endblock %}

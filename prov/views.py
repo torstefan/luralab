@@ -3,7 +3,7 @@ from django.views import generic
 
 # Create your views here.
 
-from .models import Equipment, Emodel, Os
+from .models import Equipment, Emodel, Os, Vrf
 
 def index(request):
     num_equip = Equipment.objects.all().count()
@@ -24,6 +24,15 @@ class EquipmentListView(generic.ListView):
 
 class EquipmentDetailView(generic.DetailView):
     model = Equipment
+
+
+class VrfListView(generic.ListView):
+    model = Vrf
+    paginate_by = 10
+
+
+class VrfDetailView(generic.DetailView):
+    model = Vrf
 
 
 class EmodelListView(generic.ListView):

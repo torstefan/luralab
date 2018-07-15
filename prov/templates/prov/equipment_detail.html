@@ -6,4 +6,24 @@
   <p><strong>Playbook:</strong> {{ equipment.playbook }}</p>
   <p><strong>OS:</strong> {{ equipment.os }}</p>
   <p><strong>Model:</strong> <a href="{{ equipment.equip_model.get_absolute_url }}"> {{ equipment.equip_model }}</a></p>
+    <h2>VRF</h2>
+    <table class="table">
+
+        {% for vrf in equipment.vrf_set.all %}
+            <tr><td> {{ vrf.name }} </td>
+                <td>{{ vrf.loopback }}</td>
+                <td>{{ vrf.linknet }}</td>
+                <td>
+
+                    <ul>
+                        {% for vlan in vrf.vlan_set.all %}
+                            <li>VLAN{{ vlan.vlan_id }} - {{ vlan.network_addr }}</li>
+                        {% endfor %}
+                    </ul>
+
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
 {% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ vrf.name }}</h1>
+
+  <p><strong>Loopback:</strong> {{ vrf.loopback }}</p>
+  <p><strong>Linknet:</strong> {{ vrf.linknet }}</p>
+  <p><strong>LAN:</strong> {{ vrf.lan }}</p>
+{% endblock %}

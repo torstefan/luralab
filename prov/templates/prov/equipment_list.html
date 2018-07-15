@@ -5,15 +5,45 @@
 
     {% if equipment_list %}
 
-    <ul>
-
-      {% for equipment in equipment_list %}
-      <li>
-        <a href="{{ equipment.get_absolute_url }}">{{ equipment.name }}</a> ({{ equipment.os }} - {{equipment.equip_model}})
-      </li>
-      {% endfor %}
-
-    </ul>
+        <table class="table">
+          {% for equipment in equipment_list %}
+          <tr>
+            <td>
+               <a href="{{ equipment.get_absolute_url }}">{{ equipment.name }}</a>
+            </td>
+          <td>
+              {{ equipment.os }}
+          </td>
+          <td>
+             {{equipment.equip_model}}
+          </td>
+          <td>
+            <table class="table table-sm">
+           {% for vrf in equipment.vrf_set.all %}
+               <tr>
+                   <td>
+                       {{ vrf.name }}
+                   </td>
+                   <td>
+                       {{ vrf.loopback }}
+                   </td>
+                   <td>
+                       {{ vrf.linknet }}
+                   </td>
+                   <td>
+                         <ul>
+                            {% for vlan in vrf.vlan_set.all %}
+                                <li>VLAN{{ vlan.vlan_id }} - {{ vlan.network_addr }}</li>
+                            {% endfor %}
+                        </ul>
+                   </td>
+               </tr>
+           {% endfor %}
+            </table>
+          </td>
+          </tr>
+          {% endfor %}
+        </table>
     {% else %}
       <p>There are no equipment in the database.</p>
     {% endif %}
