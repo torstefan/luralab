@@ -6,4 +6,20 @@
   <p><strong>Loopback:</strong> {{ vrf.loopback }}</p>
   <p><strong>Linknet:</strong> {{ vrf.linknet }}</p>
   <p><strong>LAN:</strong> {{ vrf.lan }}</p>
+
+    {% if vrf.vlan_set.all %}
+     <table class="table">
+         {% for vlan in vrf.vlan_set.all %}
+        <tr>
+            <td>{{ vlan.name }}</td>
+            <td>VLAN{{ vlan.vlan_id }}</td>
+            <td>{{ vlan.network_addr }}</td>
+        </tr>
+
+         {% endfor %}
+
+    </table>
+    {% else %}
+        <p> Ingen VLAN er definert </p>
+    {% endif %}
 {% endblock %}

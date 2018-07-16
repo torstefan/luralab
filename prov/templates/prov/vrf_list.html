@@ -9,7 +9,7 @@
 
       {% for vrf in vrf_list %}
       <li>
-        <a href="{{ vrf.get_absolute_url }}">{{ vrf.name }}</a>
+        <a href="{{ vrf.get_absolute_url }}">{{ vrf.name }} ({{ vrf.equipment }})</a>
       </li>
       {% endfor %}
 

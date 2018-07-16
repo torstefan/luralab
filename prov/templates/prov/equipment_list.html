@@ -18,28 +18,11 @@
              {{equipment.equip_model}}
           </td>
           <td>
-            <table class="table table-sm">
+          <ul>
            {% for vrf in equipment.vrf_set.all %}
-               <tr>
-                   <td>
-                       {{ vrf.name }}
-                   </td>
-                   <td>
-                       {{ vrf.loopback }}
-                   </td>
-                   <td>
-                       {{ vrf.linknet }}
-                   </td>
-                   <td>
-                         <ul>
-                            {% for vlan in vrf.vlan_set.all %}
-                                <li>VLAN{{ vlan.vlan_id }} - {{ vlan.network_addr }}</li>
-                            {% endfor %}
-                        </ul>
-                   </td>
-               </tr>
+              <li> <a href="{{ vrf.get_absolute_url }}">{{ vrf.name }} ({{ vrf.loopback }})</a></li>
            {% endfor %}
-            </table>
+          </ul>
           </td>
           </tr>
           {% endfor %}
