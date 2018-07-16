@@ -18,7 +18,8 @@ class Equipment(models.Model):
         """
         Returns the url to access a particular instance of the model.
         """
-        return reverse('equipment-detail', args=[str(self.id)])
+        return reverse('equipment-detail', kwargs={'slug': self.name, 'pk':str(self.id)})
+
 
     class Meta:
         ordering = ['name']
