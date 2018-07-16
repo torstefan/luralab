@@ -4,6 +4,8 @@ from django.views import generic
 # Create your views here.
 
 from .models import Equipment, Emodel, Os, Vrf
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 def index(request):
     num_equip = Equipment.objects.all().count()
@@ -42,3 +44,19 @@ class EmodelListView(generic.ListView):
 
 class EmodelDetailView(generic.DetailView):
     model = Emodel
+
+
+class EquipmentCreate(CreateView):
+    model = Equipment
+    fields = '__all__'
+    initial={'name':'ny-',}
+
+
+class EquipmentUpdate(UpdateView):
+    model = Equipment
+    fields = ['name','playbook','inventory','os','equip_model']
+
+
+class EquipmentDelete(DeleteView):
+    model = Equipment
+    success_url = reverse_lazy('equipment')
