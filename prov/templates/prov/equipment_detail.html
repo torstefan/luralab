@@ -2,15 +2,30 @@
 
 {% block content %}
   <h1>{{ equipment.name }}</h1>
+  <a href="{{ equipment.get_absolute_url }}/update">Endre {{ equipment.name }}</a>
+    <br/>
+    <br/>
+  <ul>
+      <li><strong>Playbook:</strong> {{ equipment.playbook }}</li>
+      <li><strong>OS:</strong> {{ equipment.os }}</li>
+      <li><strong>Inventory:</strong> {{ equipment.inventory }}</li>
+      <li><strong>Model:</strong> <a href="{{ equipment.equip_model.get_absolute_url }}"> {{ equipment.equip_model }}</a></li>
+  </ul>
 
-  <p><strong>Playbook:</strong> {{ equipment.playbook }}</p>
-  <p><strong>OS:</strong> {{ equipment.os }}</p>
-  <p><strong>Model:</strong> <a href="{{ equipment.equip_model.get_absolute_url }}"> {{ equipment.equip_model }}</a></p>
     <h2>VRF</h2>
+    <a href="{% url 'vrf_create' %}">Nytt VRF</a>
+    <br />
+    <br />
+    {% if equipment.vrf_set.all  %}
     <table class="table">
 
         {% for vrf in equipment.vrf_set.all %}
-            <tr><td> {{ vrf.name }} </td>
+            <tr>
+                <td>
+                    <a href="{{ vrf.get_absolute_url }}">{{ vrf.name }}</a>
+                    <a href="{{ vrf.get_absolute_url }}/update"> - (Endre)</a>
+
+                </td>
                 <td>{{ vrf.loopback }}</td>
                 <td>{{ vrf.linknet }}</td>
                 <td>
@@ -26,4 +41,8 @@
         {% endfor %}
 
     </table>
+
+    {% else %}
+    <p>Utstyr mangler VRF</p>
+    {% endif %}
 {% endblock %}

@@ -3,10 +3,11 @@
 {% block content %}
   <h1>{{ vrf.name }}</h1>
 
+  <p><strong>Equipment:</strong> <a href="{{ vrf.equipment.get_absolute_url }}">{{ vrf.equipment }}</a> </p>
   <p><strong>Loopback:</strong> {{ vrf.loopback }}</p>
   <p><strong>Linknet:</strong> {{ vrf.linknet }}</p>
-  <p><strong>LAN:</strong> {{ vrf.lan }}</p>
 
+  <h2>VLANS:</h2>
     {% if vrf.vlan_set.all %}
      <table class="table">
          {% for vlan in vrf.vlan_set.all %}

@@ -27,10 +27,10 @@ class Equipment(models.Model):
 class Vrf(models.Model):
     name = models.CharField(max_length=200, help_text="Enter name of the vrf")
 
-    equipment = models.ForeignKey('Equipment', on_delete=models.CASCADE, null=True)
+    equipment = models.ForeignKey('Equipment', on_delete=models.CASCADE, null=True, help_text="Equip VRF is connected to")
 
-    loopback = models.CharField(max_length=200, help_text="Enter name of the vrf")
-    linknet = models.CharField(max_length=200, help_text="Enter name of the vrf")
+    loopback = models.CharField(max_length=200, help_text="Enter loopback addr, eg 1.1.1.1/32")
+    linknet = models.CharField(max_length=200, help_text="Enter linknet addr, eg 1.1.1.1/31")
 
 
     def __str__(self):

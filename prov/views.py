@@ -60,3 +60,16 @@ class EquipmentUpdate(UpdateView):
 class EquipmentDelete(DeleteView):
     model = Equipment
     success_url = reverse_lazy('equipment')
+
+class VrfCreate(CreateView):
+    model = Vrf
+    fields = '__all__'
+    initial={'loopback':'/32','linknet':'/31'}
+
+class VrfUpdate(UpdateView):
+    model = Vrf
+    fields = ['name','equipment','loopback','linknet']
+
+class VrfDelete(DeleteView):
+    model = Vrf
+    success_url = reverse_lazy('vrf')
