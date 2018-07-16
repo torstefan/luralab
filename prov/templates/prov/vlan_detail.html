@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>VLAN - {{ vlan.name }}</h1>
+
+  <div style="margin-left:20px;margin-top:20px">
+<table class="table">
+    <tr>
+       <td>VLAN{{ vlan.vrf_id }}</td>
+        <td>{{ vlan.network_addr }}</td>
+    </tr>
+</table>
+  </div>
+{% endblock %}

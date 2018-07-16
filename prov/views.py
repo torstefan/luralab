@@ -3,9 +3,10 @@ from django.views import generic
 
 # Create your views here.
 
-from .models import Equipment, Emodel, Os, Vrf
+from .models import Equipment, Emodel, Os, Vrf, Vlan
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+
 
 def index(request):
     num_equip = Equipment.objects.all().count()
@@ -28,24 +29,6 @@ class EquipmentDetailView(generic.DetailView):
     model = Equipment
 
 
-class VrfListView(generic.ListView):
-    model = Vrf
-    paginate_by = 10
-
-
-class VrfDetailView(generic.DetailView):
-    model = Vrf
-
-
-class EmodelListView(generic.ListView):
-    model = Emodel
-    paginate_by = 10
-
-
-class EmodelDetailView(generic.DetailView):
-    model = Emodel
-
-
 class EquipmentCreate(CreateView):
     model = Equipment
     fields = '__all__'
@@ -61,15 +44,56 @@ class EquipmentDelete(DeleteView):
     model = Equipment
     success_url = reverse_lazy('equipment')
 
+class VrfListView(generic.ListView):
+    model = Vrf
+    paginate_by = 10
+
+
+class VrfDetailView(generic.DetailView):
+    model = Vrf
+
+
 class VrfCreate(CreateView):
     model = Vrf
     fields = '__all__'
     initial={'loopback':'/32','linknet':'/31'}
 
+
 class VrfUpdate(UpdateView):
     model = Vrf
     fields = ['name','equipment','loopback','linknet']
 
+
 class VrfDelete(DeleteView):
     model = Vrf
     success_url = reverse_lazy('vrf')
+
+
+class VlanDetailView(generic.DetailView):
+    model = Vlan
+
+
+class VlanCreate(CreateView):
+    model = Vlan
+    fields = '__all__'
+
+
+class VlanUpdate(UpdateView):
+    model = Vlan
+    fields = ['name','vlan_id','network_addr','vrf']
+    success_url = reverse_lazy('vrf')
+
+
+class VlanDelete(DeleteView):
+    model = Vlan
+    success_url = reverse_lazy('vrf')
+
+
+class EmodelListView(generic.ListView):
+    model = Emodel
+    paginate_by = 10
+
+
+class EmodelDetailView(generic.DetailView):
+    model = Emodel
+

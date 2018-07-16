@@ -46,7 +46,7 @@ class Vrf(models.Model):
         ordering = ['name']
 
 class Vlan(models.Model):
-    name = models.CharField(max_length=200, help_text="Enter name of the vrf")
+    name = models.CharField(max_length=200, help_text="Enter name of the VLAN")
     vlan_id = models.IntegerField(help_text="Enter the VLAN ID")
     network_addr = models.CharField(max_length=200, help_text="Enter net_addr in / notation. Eg. 1.1.1.0/24 ")
 

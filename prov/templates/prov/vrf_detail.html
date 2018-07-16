@@ -8,11 +8,15 @@
   <p><strong>Linknet:</strong> {{ vrf.linknet }}</p>
 
   <h2>VLANS:</h2>
+    <a href="{% url 'vlan_create' %}">Nytt VLAN</a>
     {% if vrf.vlan_set.all %}
      <table class="table">
          {% for vlan in vrf.vlan_set.all %}
         <tr>
-            <td>{{ vlan.name }}</td>
+            <td>{{ vlan.name }} -
+                <a href="{{ vlan.get_absolute_url }}/update">Endre</a> -
+                <a href="{{ vlan.get_absolute_url }}/delete">Slett</a>
+            </td>
             <td>VLAN{{ vlan.vlan_id }}</td>
             <td>{{ vlan.network_addr }}</td>
         </tr>
